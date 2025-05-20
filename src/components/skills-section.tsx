@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useInView } from "react-intersection-observer";
 import { Progress } from "./ui/progress";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,5 +102,12 @@ function SkillProgress({ value, inView }: { value: number, inView: boolean }) {
     return undefined;
   }, [inView, value]);
   
-  return <Progress value={progress} className="h-2" indicatorClassName="bg-gradient-to-r from-purple to-purple-light" />;
+  return (
+    <Progress 
+      value={progress} 
+      className="h-2" 
+      // Fix: Use className with cn utility to modify the indicator styling
+      className={cn("h-2", "relative overflow-hidden [&>div]:bg-gradient-to-r [&>div]:from-purple [&>div]:to-purple-light")}
+    />
+  );
 }

@@ -38,6 +38,13 @@ export function CustomCursor() {
       style={{
         left: mousePosition.x,
         top: mousePosition.y,
+        position: "fixed",
+        width: "24px",
+        height: "24px",
+        borderRadius: "50%",
+        pointerEvents: "none",
+        zIndex: 9999,
+        transform: "translate(-50%, -50%)"
       }}
       animate={{
         scale: isActive ? 0.8 : 1,
