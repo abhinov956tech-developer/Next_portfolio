@@ -105,8 +105,6 @@ function SkillProgress({ value, inView }: { value: number, inView: boolean }) {
   return (
     <Progress 
       value={progress} 
-      className="h-2" 
-      // Fix: Use className with cn utility to modify the indicator styling
       className={cn("h-2", "relative overflow-hidden [&>div]:bg-gradient-to-r [&>div]:from-purple [&>div]:to-purple-light")}
     />
   );

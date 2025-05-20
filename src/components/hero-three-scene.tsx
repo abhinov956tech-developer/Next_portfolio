@@ -1,12 +1,11 @@
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Sphere, Box, Torus, Float } from "@react-three/drei";
 import * as THREE from "three";
 
 export function HeroThreeScene() {
   const groupRef = useRef<THREE.Group>(null);
-  const [hovered, setHovered] = useState(false);
   
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -54,12 +53,9 @@ export function HeroThreeScene() {
         <Box 
           args={[1, 1, 1]} 
           position={[0, -1, 0]}
-          onPointerOver={() => setHovered(true)}
-          onPointerOut={() => setHovered(false)}
         >
           <meshStandardMaterial 
-            color={hovered ? "#D6BCFA" : "#8B5CF6"} 
-            wireframe={hovered}
+            color="#8B5CF6"
             roughness={0.3} 
             metalness={0.7} 
           />
@@ -67,7 +63,7 @@ export function HeroThreeScene() {
       </Float>
       
       {/* Small floating spheres */}
-      {Array.from({ length: 15 }).map((_, i) => (
+      {Array.from({ length: 10 }).map((_, i) => (
         <Float 
           key={i}
           speed={1 + Math.random()}
