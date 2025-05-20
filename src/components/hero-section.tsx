@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { HeroThreeScene } from "./hero-three-scene";
 import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
@@ -44,16 +43,9 @@ export function HeroSection() {
       id="hero" 
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      <div className="canvas-container">
-        <Canvas>
-          <ambientLight intensity={0.5} />
+      <div className="canvas-container absolute inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <HeroThreeScene />
-          <OrbitControls 
-            enableZoom={false}
-            enablePan={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
-          />
         </Canvas>
       </div>
 

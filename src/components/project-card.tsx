@@ -1,7 +1,5 @@
 
 import { useState, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 
@@ -16,27 +14,6 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
-}
-
-function ProjectPreview({ color }: { color: string }) {
-  return (
-    <Canvas className="h-48">
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      <Float speed={4} rotationIntensity={1} floatIntensity={2}>
-        <Sphere args={[1, 32, 32]}>
-          <MeshDistortMaterial 
-            color={color} 
-            attach="material" 
-            distort={0.5} 
-            speed={2}
-            roughness={0.2}
-            metalness={0.8}
-          />
-        </Sphere>
-      </Float>
-    </Canvas>
-  );
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
@@ -57,9 +34,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative h-48 overflow-hidden">
-          <div className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-            <ProjectPreview color={project.demoColor} />
-          </div>
+          <div 
+            className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'} bg-gradient-to-br`}
+            style={{ background: `linear-gradient(to bottom right, ${project.demoColor}, #D6BCFA)` }}
+          ></div>
           <div className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
             <img 
               src={project.image} 
