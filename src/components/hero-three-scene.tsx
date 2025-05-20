@@ -24,7 +24,6 @@ export function HeroThreeScene() {
       <Box 
         ref={boxRef}
         args={[1, 1, 1]} 
-        position={[0, 0, 0]}
       >
         <meshStandardMaterial 
           color="#8B5CF6"
