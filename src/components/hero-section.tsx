@@ -43,8 +43,8 @@ export function HeroSection() {
       id="hero" 
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      <div className="canvas-container absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+      <div className="absolute inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
           <HeroThreeScene />
         </Canvas>
       </div>

@@ -12,18 +12,12 @@ export function HeroThreeScene() {
     
     // Simple rotation animation
     groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.1;
-    
-    // Simple mouse tracking
-    const { mouse } = state;
-    groupRef.current.position.x = mouse.x * 0.3;
-    groupRef.current.position.y = mouse.y * 0.3;
   });
 
   return (
     <group ref={groupRef}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 10]} intensity={1} />
-      <pointLight position={[-10, -10, -10]} color="purple" intensity={1} />
       
       {/* Main sphere */}
       <Sphere args={[0.7, 16, 16]} position={[-1, 0.5, 0]}>
@@ -46,19 +40,19 @@ export function HeroThreeScene() {
         />
       </Box>
       
-      {/* Small floating spheres - using a limited number */}
-      {Array.from({ length: 5 }).map((_, i) => (
+      {/* Small floating spheres - reduced number and simplified */}
+      {[1, 2, 3].map((_, i) => (
         <Sphere 
           key={i}
-          args={[0.1 + Math.random() * 0.1, 8, 8]} 
+          args={[0.1, 8, 8]} 
           position={[
-            (Math.random() - 0.5) * 5,
-            (Math.random() - 0.5) * 5,
-            (Math.random() - 0.5) * 5
+            (Math.random() - 0.5) * 3,
+            (Math.random() - 0.5) * 3,
+            (Math.random() - 0.5) * 3
           ]}
         >
           <meshStandardMaterial 
-            color={Math.random() > 0.5 ? "#8B5CF6" : "#D6BCFA"} 
+            color={i === 0 ? "#8B5CF6" : "#D6BCFA"}
             roughness={0.5} 
             metalness={0.5} 
           />
