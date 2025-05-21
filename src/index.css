@@ -121,3 +121,239 @@ html {
   z-index: -1;
   overflow: hidden;
 }
+
+/* Add these styles to your global CSS file */
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient {
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradientText 6s ease infinite;
+  color: transparent;
+}
+
+.text-gradient-purple {
+  background-image: linear-gradient(to right, #8B5CF6, #6366F1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Additional animation classes */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Scroll indicator pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Font settings */
+.font-heading {
+  font-variation-settings: 'wght' 700;
+  letter-spacing: -0.03em;
+}
+
+/* Image mask for reveal animations */
+.image-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #14141b;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.experience-timeline .timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #8B5CF6, #6366F1);
+  z-index: 1;
+}
+
+.experience-timeline .timeline-dot {
+  position: relative;
+  z-index: 20;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+/* Skills progress bar animation */
+@keyframes fillProgress {
+  0% {
+    --progress-width: 0%;
+  }
+  100% {
+    --progress-width: var(--skill-progress);
+  }
+}
+.skill-progress-bar {
+  --progress-width: 0%;
+  position: relative;
+  animation: fillProgress 1.5s ease-out forwards;
+}
+
+.skill-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress-width);
+  height: 100%;
+  background-color: #8B5CF6;
+  transition: width 1.5s ease-out;
+}
+
+.skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress-width);
+  height: 100%;
+  background-color: #6366F1;
+  transition: width 1.5s ease-out;
+}
+
+/* Timeline connector styles */
+.timeline-connector {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #8B5CF6 0%, #6366F1 100%);
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .timeline-connector {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Card hover effects */
+.experience-card {
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Enhanced focus styles for accessibility */
+.experience-card:focus-within {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Refined skill bar styling */
+.skill-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-item .skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 15px;
+  background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.3));
+  border-radius: 0 4px 4px 0;
+}
+
+/* Badge styling refinements */
+.experience-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-badge::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite linear;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Improved background elements */
+.bg-gradient-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.15;
+  animation: float 10s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(99, 102, 241, 0.4) 50%, transparent 80%);
+}
+
+/* Modern grid layout enhancements */
+.grid-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
